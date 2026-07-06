@@ -27,9 +27,9 @@ services:
       - key: AI_PROVIDER
         value: openrouter
       - key: ALLOWED_ORIGINS
-        sync: false
+        value: "https://data-mind-i5qhndz3b-vyishu22s-projects.vercel.app,https://datamind-ai.vercel.app,http://localhost:5173"
       - key: FRONTEND_URL
-        sync: false
+        value: "https://data-mind-i5qhndz3b-vyishu22s-projects.vercel.app"
       - key: ENVIRONMENT
         value: production
       - key: DEBUG
