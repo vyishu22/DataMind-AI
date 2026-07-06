@@ -5,10 +5,10 @@ import { ProtectedRoute, GuestRoute } from '@/routes/ProtectedRoute'
 // Layout
 import AppLayout from '@/components/layout/AppLayout'
 
-// Landing page
+// Landing page (public — shown at /)
 import LandingPage from '@/pages/LandingPage'
 
-// Auth pages (new premium module)
+// Auth pages
 import LoginPage          from '@/pages/auth/LoginPage'
 import SignupPage         from '@/pages/auth/SignupPage'
 import ForgotPasswordPage from '@/pages/auth/ForgotPasswordPage'
@@ -27,8 +27,8 @@ export default function App() {
   return (
     <AuthProvider>
       <Routes>
-        {/* ── Public landing page ───────────────────────────────────── */}
-        <Route path="/home" element={<LandingPage />} />
+        {/* ── Public landing page at root ───────────────────────────── */}
+        <Route path="/" element={<LandingPage />} />
 
         {/* ── Auth routes (guest only) ──────────────────────────────── */}
         <Route path="/auth/login" element={
@@ -43,28 +43,26 @@ export default function App() {
         <Route path="/auth/reset-password" element={
           <GuestRoute><ResetPasswordPage /></GuestRoute>
         } />
-        {/* Verify-email accessible while authenticated too */}
         <Route path="/auth/verify-email" element={<VerifyEmailPage />} />
 
         {/* Legacy redirects */}
         <Route path="/login"    element={<Navigate to="/auth/login"  replace />} />
         <Route path="/register" element={<Navigate to="/auth/signup" replace />} />
 
-        {/* ── Protected app routes ──────────────────────────────────── */}
-        <Route path="/" element={
+        {/* ── Protected app routes under /app ───────────────────────── */}
+        <Route path="/app" element={
           <ProtectedRoute><AppLayout /></ProtectedRoute>
         }>
-          <Route index            element={<DashboardPage />} />
+          <Route index              element={<DashboardPage />} />
           <Route path="dataset/:id" element={<DatasetPage />} />
           <Route path="chat/:id?"   element={<ChatPage />} />
           <Route path="forecast/:id?" element={<ForecastPage />} />
-          <Route path="reports"   element={<ReportsPage />} />
-          <Route path="settings"  element={<SettingsPage />} />
+          <Route path="reports"     element={<ReportsPage />} />
+          <Route path="settings"    element={<SettingsPage />} />
         </Route>
 
         {/* 404 */}
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+        <Route path="*" element={<Navigate to="/" replace />} />      </Routes>
     </AuthProvider>
   )
 }

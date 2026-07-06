@@ -32,7 +32,7 @@ export default function DashboardPage() {
         const ds = await uploadDataset(file)
         toast.success(`${file.name} uploaded`, { id: tid })
         setActiveDataset(ds)
-        navigate(`/dataset/${ds.id}`)
+        navigate(`/app/dataset/${ds.id}`)
       } catch (err: any) {
         toast.error(err.response?.data?.detail || 'Upload failed', { id: tid })
       }
@@ -114,7 +114,7 @@ export default function DashboardPage() {
                 initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.04 }}
                 className="glass-dark rounded-xl p-4 flex items-center gap-4 group hover:border-brand-500/30 transition-all cursor-pointer"
-                onClick={() => { setActiveDataset(ds); navigate(`/dataset/${ds.id}`) }}
+                onClick={() => { setActiveDataset(ds); navigate(`/app/dataset/${ds.id}`) }}
               >
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-700/20 border border-brand-500/20 flex items-center justify-center shrink-0">
                   <Database size={18} className="text-brand-400" />
@@ -129,14 +129,14 @@ export default function DashboardPage() {
                 </div>
                 <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                   <button
-                    onClick={(e) => { e.stopPropagation(); setActiveDataset(ds); navigate(`/chat/${ds.id}`) }}
+                    onClick={(e) => { e.stopPropagation(); setActiveDataset(ds); navigate(`/app/chat/${ds.id}`) }}
                     className="p-2 rounded-lg hover:bg-white/10 text-slate-400 hover:text-brand-300 transition-colors"
                     title="Chat with AI"
                   >
                     <MessageSquare size={15} />
                   </button>
                   <button
-                    onClick={(e) => { e.stopPropagation(); setActiveDataset(ds); navigate(`/forecast/${ds.id}`) }}
+                    onClick={(e) => { e.stopPropagation(); setActiveDataset(ds); navigate(`/app/forecast/${ds.id}`) }}
                     className="p-2 rounded-lg hover:bg-white/10 text-slate-400 hover:text-emerald-300 transition-colors"
                     title="Forecast"
                   >

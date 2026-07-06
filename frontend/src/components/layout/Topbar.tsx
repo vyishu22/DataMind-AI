@@ -5,11 +5,11 @@ import { useAuth } from '@/context/AuthContext'
 import { getInitials } from '@/lib/utils'
 
 const PAGE_TITLES: Record<string, string> = {
-  '/':         'Dashboard',
-  '/chat':     'AI Chat',
-  '/forecast': 'Forecasting',
-  '/reports':  'Reports',
-  '/settings': 'Settings',
+  '/app':          'Dashboard',
+  '/app/chat':     'AI Chat',
+  '/app/forecast': 'Forecasting',
+  '/app/reports':  'Reports',
+  '/app/settings': 'Settings',
 }
 
 const PAGE_ICONS: Record<string, string> = {
@@ -137,7 +137,7 @@ export default function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
 
       {/* ── Avatar / Profile ──────────────────────────────────────── */}
       <button
-        onClick={() => navigate('/settings')}
+        onClick={() => navigate('/app/settings')}
         title="Profile & Settings"
         className="relative flex items-center justify-center shrink-0 transition-all"
         style={{ width: 36, height: 36, borderRadius: '50%' }}

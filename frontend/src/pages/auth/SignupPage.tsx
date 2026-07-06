@@ -47,7 +47,7 @@ export default function SignupPage() {
     try {
       await register(fields.fullName.trim(), fields.email, fields.password)
       setSuccess(true)
-      setTimeout(() => { navigate('/') }, 1800)
+      setTimeout(() => { navigate('/app') }, 1800)
       toast.success('Account created! Check your email to verify 🎉')
     } catch (err: any) {
       const msg = err?.response?.data?.detail || 'Registration failed'

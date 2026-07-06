@@ -12,12 +12,14 @@ export function ProtectedRoute({ children, requireVerified = false }: Props) {
 
   if (isInitializing) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-surface-900">
+      <div className="min-h-screen flex items-center justify-center" style={{ background:'#08040F' }}>
         <div className="flex flex-col items-center gap-4">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center animate-pulse">
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center animate-pulse"
+            style={{ background:'linear-gradient(135deg,#7C3AED,#EC4899)' }}>
             <span className="text-white text-lg">✦</span>
           </div>
-          <div className="w-6 h-6 border-2 border-brand-500 border-t-transparent rounded-full animate-spin" />
+          <div className="w-6 h-6 border-2 border-t-transparent rounded-full animate-spin"
+            style={{ borderColor:'rgba(168,85,247,0.4)', borderTopColor:'#A855F7' }} />
         </div>
       </div>
     )
@@ -38,6 +40,6 @@ export function GuestRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, isInitializing } = useAuth()
 
   if (isInitializing) return null
-  if (isAuthenticated) return <Navigate to="/" replace />
+  if (isAuthenticated) return <Navigate to="/app" replace />
   return <>{children}</>
 }

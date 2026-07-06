@@ -10,11 +10,11 @@ import { cn, getInitials, truncate } from '@/lib/utils'
 import toast from 'react-hot-toast'
 
 const NAV = [
-  { to: '/',         icon: LayoutDashboard, label: 'Dashboard' },
-  { to: '/chat',     icon: MessageSquare,   label: 'AI Chat'   },
-  { to: '/forecast', icon: TrendingUp,      label: 'Forecast'  },
-  { to: '/reports',  icon: FileText,        label: 'Reports'   },
-  { to: '/settings', icon: Settings,        label: 'Settings'  },
+  { to: '/app',          icon: LayoutDashboard, label: 'Dashboard' },
+  { to: '/app/chat',     icon: MessageSquare,   label: 'AI Chat'   },
+  { to: '/app/forecast', icon: TrendingUp,      label: 'Forecast'  },
+  { to: '/app/reports',  icon: FileText,        label: 'Reports'   },
+  { to: '/app/settings', icon: Settings,        label: 'Settings'  },
 ]
 
 interface Props { open: boolean; onClose: () => void }
@@ -85,7 +85,7 @@ export default function Sidebar({ open, onClose }: Props) {
           {/* ── Nav ────────────────────────────────────────────────── */}
           <nav className="flex-1 overflow-y-auto px-3 py-3 space-y-0.5">
             {NAV.map(({ to, icon: Icon, label }) => (
-              <NavLink key={to} to={to} end={to === '/'}
+              <NavLink key={to} to={to} end={to === '/app'}
                 className="block rounded-2xl transition-all duration-200 group"
               >
                 {({ isActive }) => (
@@ -120,7 +120,7 @@ export default function Sidebar({ open, onClose }: Props) {
                   style={{ color: '#3D1A5A' }}>Recent Datasets</p>
                 {datasets.slice(0, 6).map(ds => (
                   <button key={ds.id}
-                    onClick={() => { setActiveDataset(ds); navigate(`/dataset/${ds.id}`) }}
+                    onClick={() => { setActiveDataset(ds); navigate(`/app/dataset/${ds.id}`) }}
                     className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs transition-all duration-150"
                     style={activeDataset?.id === ds.id ? {
                       background: 'rgba(168,0,255,0.12)',
