@@ -53,8 +53,7 @@ export default function SignupPage() {
       const msg = err?.response?.data?.detail || 'Registration failed'
       toast.error(msg)
       if (msg.toLowerCase().includes('email')) setErrors({ email: msg })
-    }
-  }
+    }  }
 
   if (success) {
     return (

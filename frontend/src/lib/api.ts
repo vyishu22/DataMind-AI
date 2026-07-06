@@ -1,9 +1,18 @@
 import axios from 'axios'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+const API_URL = import.meta.env.VITE_API_URL || ''
+
+// Warn in console if API URL is not configured (helps debug Vercel deployments)
+if (!API_URL) {
+  console.error(
+    '[DataMind AI] VITE_API_URL is not set. ' +
+    'Add it in Vercel → Settings → Environment Variables. ' +
+    'Value should be your Render backend URL e.g. https://datamind-api.onrender.com'
+  )
+}
 
 export const api = axios.create({
-  baseURL: API_URL,
+  baseURL: API_URL || 'http://localhost:8000',
   timeout: 60_000,
 })
 
