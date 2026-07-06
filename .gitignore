@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+*.egg
+.pytest_cache/
+
+# Node
+node_modules/
+dist/
+.next/
+.nuxt/
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Uploads & generated files
+backend/uploads/
+backend/reports_output/
+*.pdf
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Docker
+*.log
